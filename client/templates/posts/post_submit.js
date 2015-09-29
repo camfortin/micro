@@ -2,6 +2,28 @@ Template.postSubmit.events({
 	'submit form': function(e) {
 		e.preventDefault();
 
+		var post = {
+			url: $(e.target).find('[name=url]').val(),
+			title: $(e.target).find('[name=title]').val(),
+			//email: Meteor.user().emails[0].address
+		};
+
+		Meteor.call('postInsert', post, function(error,result) {
+			if (error)
+				return alert(error.reason);
+
+			Router.go('postPage', {_id: result._id});
+		});
+	}
+
+});
+
+/*
+
+Template.postSubmit.events({
+	'submit form': function(e) {
+		e.preventDefault();
+
 		var thisemail = "";
 
 		if (Meteor.user()) {thisemail = Meteor.user().emails[0].address} 
@@ -17,3 +39,5 @@ Template.postSubmit.events({
 	}
 
 });
+
+*/
