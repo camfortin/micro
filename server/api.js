@@ -1,23 +1,11 @@
-Articles = new Mongo.Collection('articles');
+// Create post via API
+// curl -X POST http://localhost:3000/api/posts/ -d "title=Hello" -d "author=camfortin" -d "url=https://hello.com/hello"
 
-if (Articles.find().count() === 0) {
-  Articles.insert({
-    title: 'Article 1',
-    url: 'http://sachagreif.com/introducing-telescope/',
-    _id: '01'
-  });
-  Articles.insert({
-    title: 'Article 2',
-    url: 'http://sachagreif.com/introducing-telescope/',
-    _id: '02'
-  });
-  Articles.insert({
-    title: 'Article 3',
-    url: 'http://sachagreif.com/introducing-telescope/',
-    _id: '03'
-  });
-  
-}
+// Delete post
+// curl -X DELETE http://localhost:3000/api/posts/LBZ4Zz2naEKyxL6L5
+
+//Log In
+//curl http://localhost:3000/api/login/ -d "username=camfortin&password=password"
 
 if (Meteor.isServer) {
 
@@ -27,7 +15,7 @@ if (Meteor.isServer) {
     prettyJson: true
   });
 
-  // Generates: GET, POST on /api/items and GET, PUT, DELETE on
+  // Generates: GET, POST on /api/posts and GET, PUT, DELETE on
   // /api/items/:id for the Items collection
   Api.addCollection(Articles);
   Api.addCollection(Posts);
