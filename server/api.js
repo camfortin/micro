@@ -17,7 +17,6 @@ if (Meteor.isServer) {
 
   // Generates: GET, POST on /api/posts and GET, PUT, DELETE on
   // /api/items/:id for the Items collection
-  Api.addCollection(Articles);
   Api.addCollection(Posts);
 
   // Generates: POST on /api/users and GET, DELETE /api/users/:id for
